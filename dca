@@ -1,32 +1,31 @@
-
-      "# 1. Instale a biblioteca (adicione o ponto de exclamação no início)\n",
-        "#!pip install siconfipy\n",
-        "\n",
-        "# 2. Importe as bibliotecas necessárias\n",
-        "import os\n",
-        "import pandas as pd\n",
-        "from siconfipy import get_annual_acc  # Corrigido o nome do pacote para siconfipy\n",
-        "\n",
-        "# 3. Configuração dos diretórios\n",
-        "outname = 'arquivo-DCA.json'  # Corrigido o erro de digitação \"arquvivo\"\n",
-        "outdir = './SICONFI'\n",
-        "\n",
-        "# Corrigido: faltava os dois pontos (:) no final do 'if'\n",
-        "if not os.path.exists(outdir):\n",
-        "    os.mkdir(outdir)\n",
-        "\n",
-        "# Corrigido: o correto é os.path.join (e não os.patch.join)\n",
-        "fullname = os.path.join(outdir, outname)\n",
-        "\n",
-        "# 4. Busca dos dados e salvamento\n",
-        "# Buscando os dados de 2026 (RREO do 1º bimestre)\n",
-        "DCA = get_annual_acc(year=2025, cod=4118402)\n",
-        "\n",
-        "# Corrigido: o Pandas usa CamelCase -> pd.DataFrame\n",
-        "data = pd.DataFrame(DCA)\n",
-        "\n",
-        "# Corrigido: o encoding correto para Excel/Português é 'utf-8-sig' (e não UTF-1)\n",
-        "data.to_json(fullname, orient='records', force_ascii=False, indent=4)\n",
-        "\n",
-        "print(f\"Arquivo salvo com sucesso em: {fullname}\")\n",
+# 1. Instale a biblioteca (adicione o ponto de exclamação no início)
+        #!pip install siconfipy
+        
+        # 2. Importe as bibliotecas necessárias
+        import os
+        import pandas as pd
+        from siconfipy import get_annual_acc  # Corrigido o nome do pacote para siconfipy
+        
+        # 3. Configuração dos diretórios
+        outname = 'arquivo-DCA.json'  # Corrigido o erro de digitação \arquvivo\
+        outdir = './SICONFI'
+        
+        # Corrigido: faltava os dois pontos (:) no final do 'if'
+        if not os.path.exists(outdir):
+            os.mkdir(outdir)
+        
+        # Corrigido: o correto é os.path.join (e não os.patch.join)
+        fullname = os.path.join(outdir, outname)
+        
+        # 4. Busca dos dados e salvamento
+        # Buscando os dados de 2026 (RREO do 1º bimestre)
+        DCA = get_annual_acc(year=2025, cod=4118402)
+        
+        # Corrigido: o Pandas usa CamelCase -> pd.DataFrame
+        data = pd.DataFrame(DCA)
+        
+        # Corrigido: o encoding correto para Excel/Português é 'utf-8-sig' (e não UTF-1)
+        data.to_json(fullname, orient='records', force_ascii=False, indent=4)
+        
+        print(f\Arquivo salvo com sucesso em: {fullname}\)
       
